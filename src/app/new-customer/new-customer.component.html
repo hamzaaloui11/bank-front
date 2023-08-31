@@ -1,1 +1,33 @@
-<p>new-customer works!</p>
+<div class="container">
+  <div class="card col-5 offset-3 mt-3">
+    <div class="card-header">Ajouter Client</div>
+    <div class="card-body">
+      <form [formGroup]="newCustomerFormGroup" (ngSubmit)="handleAddCustomer()" class="form-control">
+        <label class="form-label">Name :</label>
+        <input class="input-group-text" formControlName="name">
+        <span class="text-danger"
+              *ngIf="newCustomerFormGroup.controls['name'].touched
+            && newCustomerFormGroup.controls['name'].errors
+            && newCustomerFormGroup.controls['name'].errors!['required']">
+            Name is Required
+          </span>
+        <span class="text-danger"
+              *ngIf="newCustomerFormGroup.controls['name'].touched
+            && newCustomerFormGroup.controls['name'].errors
+            && newCustomerFormGroup.controls['name'].errors!['minlength']">
+            Username contain minimum 4 character
+          </span><br/>
+        <label class="form-label">Mail :</label>
+        <input class="input-group-text" formControlName="email">
+        <span class="text-danger"
+              *ngIf="newCustomerFormGroup.controls['email'].touched
+            && newCustomerFormGroup.controls['email'].errors
+            && newCustomerFormGroup.controls['email'].errors!['email']">
+            Name is Required
+          </span>
+        <br/>
+        <button [disabled]="!newCustomerFormGroup.valid" class="btn btn-info mt-2">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+</div>
